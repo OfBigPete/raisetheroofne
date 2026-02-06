@@ -540,6 +540,23 @@ img {
   .nav-toggle {
     display: inline-flex;
   }
+
+  .header-inner {
+    padding: 12px 0;
+  }
+
+  .brand-logo {
+    max-width: 120px;
+    height: auto;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.75rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
