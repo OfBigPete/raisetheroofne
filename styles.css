@@ -532,6 +532,10 @@ img {
 }
 
 @media (max-width: 980px) {
+  .site-header {
+    position: static;
+  }
+
   .primary-nav,
   .header-actions {
     display: none;
