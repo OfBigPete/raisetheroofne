@@ -533,7 +533,9 @@ img {
 
 @media (max-width: 980px) {
   .site-header {
-    position: static;
+    position: relative !important;
+    top: auto;
+    z-index: auto;
   }
 
   .primary-nav,
