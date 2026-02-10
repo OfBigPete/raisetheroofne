@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Raise The Roof NE">
+  <g fill="none" stroke="#ff5a1f" stroke-width="4" stroke-linejoin="round">
+    <polyline points="4,52 18,28 32,52" />
+    <polyline points="18,52 32,28 46,52" />
+    <polyline points="32,52 46,28 60,52" />
+  </g>
+</svg>
