@@ -462,10 +462,11 @@
 
           try {
             const formData = new FormData(contactForm);
+            const payload = new URLSearchParams(formData);
             const endpoint = contactForm.dataset.endpoint || contactForm.action;
             await fetch(endpoint, {
               method: "POST",
-              body: formData,
+              body: payload,
               mode: "no-cors",
             });
             if (formStatus) {
