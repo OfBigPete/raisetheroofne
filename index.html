@@ -341,6 +341,7 @@
             class="contact-form"
             method="POST"
             action="https://script.google.com/macros/s/AKfycbyBzaeUj6uFEEh01s5TstyDdwS2MQdkEWC0ZlobLVVVuEMFwAaKD6pXQxc3UmjuOooU/exec"
+            id="contact-form"
           >
             <label>
               Full Name
@@ -381,6 +382,7 @@
               ></textarea>
             </label>
             <button class="btn btn-primary" type="submit">Request My Quote</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
         <div class="map-panel">
@@ -445,6 +447,36 @@
       });
 
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const contactForm = document.getElementById("contact-form");
+      const formStatus = document.getElementById("form-status");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (formStatus) {
+            formStatus.textContent = "Sending...";
+          }
+
+          try {
+            const formData = new FormData(contactForm);
+            await fetch(contactForm.action, {
+              method: "POST",
+              body: formData,
+              mode: "no-cors",
+            });
+            if (formStatus) {
+              formStatus.textContent = "Thanks! We will be in touch shortly.";
+            }
+            contactForm.reset();
+          } catch (error) {
+            if (formStatus) {
+              formStatus.textContent =
+                "Sorry, something went wrong. Please try again or call us.";
+            }
+          }
+        });
+      }
+
       const reviews = [
         {
           text:
