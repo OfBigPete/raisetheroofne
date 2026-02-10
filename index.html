@@ -340,8 +340,10 @@
           <form
             class="contact-form"
             method="POST"
-            action="https://script.google.com/macros/s/AKfycbyBzaeUj6uFEEh01s5TstyDdwS2MQdkEWC0ZlobLVVVuEMFwAaKD6pXQxc3UmjuOooU/exec"
+            action="#"
+            data-endpoint="https://script.google.com/macros/s/AKfycbyBzaeUj6uFEEh01s5TstyDdwS2MQdkEWC0ZlobLVVVuEMFwAaKD6pXQxc3UmjuOooU/exec"
             id="contact-form"
+            onsubmit="return false;"
           >
             <label>
               Full Name
@@ -453,13 +455,15 @@
       if (contactForm) {
         contactForm.addEventListener("submit", async (event) => {
           event.preventDefault();
+          event.stopPropagation();
           if (formStatus) {
             formStatus.textContent = "Sending...";
           }
 
           try {
             const formData = new FormData(contactForm);
-            await fetch(contactForm.action, {
+            const endpoint = contactForm.dataset.endpoint || contactForm.action;
+            await fetch(endpoint, {
               method: "POST",
               body: formData,
               mode: "no-cors",
