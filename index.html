@@ -466,7 +466,10 @@
             const endpoint = contactForm.dataset.endpoint || contactForm.action;
             await fetch(endpoint, {
               method: "POST",
-              body: payload,
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+              },
+              body: payload.toString(),
               mode: "no-cors",
             });
             if (formStatus) {
