@@ -533,9 +533,19 @@
         },
       ];
 
+      for (let i = reviews.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [reviews[i], reviews[j]] = [reviews[j], reviews[i]];
+      }
+
       let reviewIndex = 0;
       const reviewText = document.getElementById("review-text");
       const reviewName = document.getElementById("review-name");
+
+      if (reviewText && reviewName) {
+        reviewText.textContent = `“${reviews[0].text}”`;
+        reviewName.textContent = reviews[0].name;
+      }
 
       if (!prefersReducedMotion.matches) {
         setInterval(() => {
